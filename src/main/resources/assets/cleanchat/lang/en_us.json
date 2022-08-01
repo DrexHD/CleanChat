@@ -1,0 +1,5 @@
+{
+  "text.autoconfig.cleanchat.title": "Clean Chat",
+  "text.autoconfig.cleanchat.option.disableIcons": "Disable icon rendering",
+  "text.autoconfig.cleanchat.option.disableBar": "Disable indicator bar rendering"
+}

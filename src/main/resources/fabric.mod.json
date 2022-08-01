@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "cleanchat",
+  "version": "${version}",
+  "name": "Clean Chat",
+  "description": "A simple mod to remove chat message warnings introduced in 1.19.1",
+  "authors": [
+    "Drex"
+  ],
+  "contact": {
+    "homepage": "https://github.com/DrexHD/CleanChat",
+    "sources": "https://github.com/DrexHD/CleanChat",
+    "issues": "https://github.com/DrexHD/CleanChat/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/cleanchat/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.drex.cleanchat.CleanChatMod"
+    ],
+    "modmenu": [
+      "me.drex.cleanchat.compat.ModMenuCompat"
+    ]
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/HeZayd6SxF"
+      }
+    }
+  },
+  "mixins": [
+    "cleanchat.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "minecraft": ">=1.19.1",
+    "java": ">=17"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
+}
