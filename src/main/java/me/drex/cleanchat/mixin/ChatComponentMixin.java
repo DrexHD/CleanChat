@@ -21,19 +21,19 @@ public abstract class ChatComponentMixin {
         if (!CleanChatMod.CHAT_CONFIG.disableBar) GuiComponent.fill(poseStack, i, j, k, l, m);
     }
 
-    @ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Font;drawShadow(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/util/FormattedCharSequence;FFI)I"), index = 2)
+    @ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V", ordinal = 0), index = 0)
     public float moveTextLeft(float original) {
-        return CleanChatMod.CHAT_CONFIG.disableBar ? -4 : 0;
+        return CleanChatMod.CHAT_CONFIG.disableBar ? 2 : original;
     }
 
     @ModifyConstant(method = "screenToChatX", constant = @Constant(doubleValue = 4.0))
     public double adjustChatCoordinates(double original) {
-        return CleanChatMod.CHAT_CONFIG.disableBar ? 0 : original;
+        return CleanChatMod.CHAT_CONFIG.disableBar ? 2 : original;
     }
 
     @ModifyConstant(method = "getTagIconLeft", constant = @Constant(intValue = 4))
     public int moveIcon(int original) {
-        return CleanChatMod.CHAT_CONFIG.disableBar ? 0 : original;
+        return CleanChatMod.CHAT_CONFIG.disableBar ? 2 : original;
     }
 
 }
