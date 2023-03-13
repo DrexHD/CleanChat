@@ -21,8 +21,8 @@ public abstract class ChatComponentMixin {
         if (!CleanChatMod.CHAT_CONFIG.disableBar) GuiComponent.fill(poseStack, i, j, k, l, m);
     }
 
-    @ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V", ordinal = 0), index = 0)
-    public float moveTextLeft(float original) {
+    @ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(DDD)V", ordinal = 0), index = 0)
+    public double moveTextLeft(double original) {
         return CleanChatMod.CHAT_CONFIG.disableBar ? 2 : original;
     }
 
