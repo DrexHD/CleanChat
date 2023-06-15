@@ -1,9 +1,8 @@
 package me.drex.cleanchat.mixin;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import me.drex.cleanchat.CleanChatMod;
 import net.minecraft.client.GuiMessageTag;
-import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ChatComponent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
@@ -16,9 +15,9 @@ public abstract class ChatComponentMixin {
         return CleanChatMod.CHAT_CONFIG.disableIcons ? null : original.icon();
     }
 
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/components/ChatComponent;fill(Lcom/mojang/blaze3d/vertex/PoseStack;IIIII)V", ordinal = 1))
-    public void removeBar(PoseStack poseStack, int i, int j, int k, int l, int m) {
-        if (!CleanChatMod.CHAT_CONFIG.disableBar) GuiComponent.fill(poseStack, i, j, k, l, m);
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;fill(IIIII)V", ordinal = 1))
+    public void removeBar(GuiGraphics guiGraphics, int i, int j, int k, int l, int m) {
+        if (!CleanChatMod.CHAT_CONFIG.disableBar) guiGraphics.fill(i, j, k, l, m);
     }
 
     @ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V", ordinal = 0), index = 0)
